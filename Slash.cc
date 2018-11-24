@@ -2,6 +2,7 @@
 
 #include <iostream>
 using std::cin;
+using std::cerr;
 using std::cout;
 using std::endl;
 
@@ -42,7 +43,7 @@ void Slash::signalHandler(int number) {
 }
 
 int Slash::run() {
-	Prompt prompt;
+	Prompt prompt(env);
 	int exitCode = EXIT_SUCCESS;
 	bool exitFlag = false;
 	while(!exitFlag) {
@@ -61,7 +62,14 @@ int Slash::run() {
 		if(command == "exit") {
 			exitFlag = true;
 		} else if(command == "cd") {
-			chdir(arguments[1].c_str());
+			if(arguments.size() == 1) {
+				chdir(env.getHomeDir().c_str());
+			} else {
+				const char* dirName = arguments[1].c_str();
+				if(chdir(dirName) == -1) {
+					cerr << "chdir: " << strerror(errno) << " (" << dirName << ")" << endl;
+				}
+			}
 		} else {
 			int status;
 			pid_t pid, waitPid;

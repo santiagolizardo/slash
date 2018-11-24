@@ -11,5 +11,6 @@ class Prompt {
 		Env env;
 
 	public:
+		Prompt(const Env& env) : env(env) {}
 		string get() const;
 };

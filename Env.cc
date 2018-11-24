@@ -17,3 +17,7 @@ string Env::getHostname() const {
 	return hostNameBuffer;
 }
 
+string Env::getHomeDir() const {
+	return getenv("HOME");
+}
+
