@@ -18,6 +18,8 @@ using std::endl;
 
 #include <readline/readline.h>
 
+#include <cstdlib> // setenv
+
 vector<string> Slash::splitLine(const string& line) {
 	std::vector<std::string> tokens;
 	std::string token;
@@ -28,10 +30,12 @@ vector<string> Slash::splitLine(const string& line) {
 	return tokens;
 }
 
-Slash::Slash(int argc, char** arg) {
+Slash::Slash(int argc, char** argv) {
 	signal(SIGINT, Slash::signalHandler);
 
 	read_history(HISTORY_PATH);
+
+	setenv("SHELL", argv[0], 1);
 }
 
 void Slash::signalHandler(int number) {

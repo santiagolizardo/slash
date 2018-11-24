@@ -16,7 +16,7 @@ class Slash {
 		static constexpr char HISTORY_PATH[] = ".slash_history";
 
 	public:
-		Slash(int argc, char** arg);
+		Slash(int argc, char** argv);
 		int run();
 };
 
