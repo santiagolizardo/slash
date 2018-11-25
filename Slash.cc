@@ -11,8 +11,6 @@ using std::endl;
 
 #include <sstream>
 
-#include <unistd.h>
-
 #include "Prompt.h"
 
 #include <signal.h>
@@ -20,6 +18,10 @@ using std::endl;
 #include <readline/readline.h>
 
 #include <cstdlib> // setenv
+
+#include "ChangeDirCommand.h"
+#include "ExitCommand.h"
+#include "ProcessCommand.h"
 
 vector<string> Slash::splitLine(const string& line) {
 	std::vector<std::string> tokens;
@@ -60,30 +62,17 @@ int Slash::run() {
 		vector<string> arguments = splitLine(commandLine);
 		string command = arguments[0];
 		if(command == "exit") {
-			exitFlag = true;
+			ExitCommand command;
+			command.execute();
+			exitFlag = command.shouldExit();
 		} else if(command == "cd") {
-			if(arguments.size() == 1) {
-				chdir(env.getHomeDir().c_str());
-			} else {
-				const char* dirName = arguments[1].c_str();
-				if(chdir(dirName) == -1) {
-					cerr << "chdir: " << strerror(errno) << " (" << dirName << ")" << endl;
-				}
-			}
+			ChangeDirCommand command(env, arguments);
+			command.execute();
+			exitFlag = command.shouldExit();
 		} else {
-			int status;
-			pid_t pid, waitPid;
-			pid = fork();
-			if(pid < 0) {
-				// error forking
-			} else if(pid == 0) {
-				system(commandLine.c_str());
-				exit(EXIT_SUCCESS);
-			} else {
-				do {
-				waitPid = waitpid(pid, &status, WUNTRACED);
-				} while(!WIFEXITED(status) && !WIFSIGNALED(status));
-			}
+			ProcessCommand command(commandLine);
+			command.execute();
+			exitFlag = command.shouldExit();
 		}
 	}
 
