@@ -17,8 +17,6 @@ using std::endl;
 
 #include <readline/readline.h>
 
-#include <cstdlib> // setenv
-
 #include <memory>
 using std::unique_ptr;
 
@@ -41,7 +39,7 @@ Slash::Slash(int argc, char** argv) {
 
 	read_history(HISTORY_PATH);
 
-	setenv("SHELL", argv[0], 1);
+	env.setShell(argv[0]);
 }
 
 void Slash::signalHandler(int number) {

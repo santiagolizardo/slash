@@ -10,4 +10,5 @@ class Env {
 		string getUser() const;
 		string getHostname() const;
 		string getHomeDir() const;
+		void setShell(const string& shell) const;
 };

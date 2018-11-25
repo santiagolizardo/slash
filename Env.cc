@@ -1,6 +1,6 @@
 #include "Env.h"
 
-#include <cstdlib>
+#include <cstdlib> // setenv
 #include <unistd.h>
 
 string Env::getUser() const {
@@ -21,3 +21,6 @@ string Env::getHomeDir() const {
 	return getenv("HOME");
 }
 
+void Env::setShell(const string& shell) const {
+	setenv("SHELL", shell.c_str(), 1);
+}
