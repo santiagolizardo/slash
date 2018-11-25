@@ -11,13 +11,10 @@ using std::string;
 class Slash {
 
 	private:
-		static void signalHandler(int number);
-
-		vector<string> splitLine(const string& line);
-
 		static constexpr char HISTORY_PATH[] = ".slash_history";
-
+		static void signalHandler(int number);
 		Env env;
+		vector<string> splitLine(const string& line);
 
 	public:
 		Slash(int argc, char** argv);

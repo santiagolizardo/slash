@@ -19,6 +19,9 @@ using std::endl;
 
 #include <cstdlib> // setenv
 
+#include <memory>
+using std::unique_ptr;
+
 #include "ChangeDirCommand.h"
 #include "ExitCommand.h"
 #include "ProcessCommand.h"
@@ -60,20 +63,17 @@ int Slash::run() {
 			continue;
 		}
 		vector<string> arguments = splitLine(commandLine);
-		string command = arguments[0];
-		if(command == "exit") {
-			ExitCommand command;
-			command.execute();
-			exitFlag = command.shouldExit();
-		} else if(command == "cd") {
-			ChangeDirCommand command(env, arguments);
-			command.execute();
-			exitFlag = command.shouldExit();
+		string programName = arguments[0];
+		unique_ptr<Command> command;
+		if(programName == "exit") {
+			command = unique_ptr<Command>(new ExitCommand());
+		} else if(programName == "cd") {
+			command = unique_ptr<Command>(new ChangeDirCommand(env, arguments));
 		} else {
-			ProcessCommand command(commandLine);
-			command.execute();
-			exitFlag = command.shouldExit();
+			command = unique_ptr<Command>(new ProcessCommand(commandLine));
 		}
+		command->execute();
+		exitFlag = command->shouldExit();
 	}
 
 	write_history(HISTORY_PATH);

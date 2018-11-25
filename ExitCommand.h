@@ -1,7 +1,9 @@
 #pragma once
 
-class ExitCommand {
+#include "Command.h"
+
+class ExitCommand : public Command {
 	public:
-		void execute() {}
-		bool shouldExit() const { return true; }
+		virtual void execute() override {}
+		virtual bool shouldExit() override { return true; }
 };

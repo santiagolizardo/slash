@@ -3,7 +3,7 @@
 #include <cstdio>
 #include <unistd.h>
 
-void ChangeDirCommand::execute() const {
+void ChangeDirCommand::execute() {
 	if(args.size() == 1) {
 		chdir(env.getHomeDir().c_str());
 	} else {
@@ -14,6 +14,3 @@ void ChangeDirCommand::execute() const {
 	}
 }
 
-bool ChangeDirCommand::shouldExit() const {
-	return false;
-}
