@@ -8,6 +8,9 @@ using std::string;
 class Prompt {
 
 	private:
+		static constexpr char DefaultPrompt[] = "\033[1;31muser\033[0m@machine";
+
+		string evaluate(const string& prompt) const;
 		Env env;
 
 	public:

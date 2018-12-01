@@ -11,7 +11,7 @@ $(program_name): $(objects)
 	$(compiler) $^ -lreadline -o $@
 
 $(obj_dir)/%.o: $(src_dir)/%.cc
-	$(compiler) -std=c++17 -c $< -o $@
+	$(compiler) -g -std=c++17 -c $< -o $@
 
 clean:
 	rm -f *.o

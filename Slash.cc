@@ -23,6 +23,7 @@ using std::unique_ptr;
 #include "ChangeDirCommand.h"
 #include "ExitCommand.h"
 #include "ProcessCommand.h"
+#include "CommandException.h"
 
 vector<string> Slash::splitLine(const string& line) {
 	std::vector<std::string> tokens;
@@ -70,8 +71,12 @@ int Slash::run() {
 		} else {
 			command = unique_ptr<Command>(new ProcessCommand(commandLine));
 		}
-		command->execute();
-		exitFlag = command->shouldExit();
+		try {
+			command->execute();
+			exitFlag = command->shouldExit();
+		} catch(const CommandException& ce) {
+			cerr << "ERROR: " << ce.what() << endl;
+		}
 	}
 
 	write_history(HISTORY_PATH);
