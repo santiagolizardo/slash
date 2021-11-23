@@ -1,0 +1,54 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+ChangeDirCommand	ChangeDirCommand.h	/^		ChangeDirCommand(const Env& env, const vector<string>& args) : env(env), args(args) {}$/;"	f	class:ChangeDirCommand
+ChangeDirCommand	ChangeDirCommand.h	/^class ChangeDirCommand : public Command {$/;"	c
+Command	Command.h	/^class Command {$/;"	c
+CommandException	CommandException.h	/^		CommandException(const string& s) : exception(), message(s) {}$/;"	f	class:CommandException
+CommandException	CommandException.h	/^class CommandException : public exception {$/;"	c
+DefaultPrompt	Prompt.h	/^		static constexpr char DefaultPrompt[] = "\\033[1;31muser\\033[0m@machine";$/;"	m	class:Prompt
+Env	Env.h	/^class Env {$/;"	c
+ExitCommand	ExitCommand.h	/^class ExitCommand : public Command {$/;"	c
+HISTORY_PATH	Slash.h	/^		static constexpr char HISTORY_PATH[] = ".slash_history";$/;"	m	class:Slash
+ProcessCommand	ProcessCommand.h	/^		ProcessCommand(const string& commandLine) : commandLine(commandLine) {}$/;"	f	class:ProcessCommand
+ProcessCommand	ProcessCommand.h	/^class ProcessCommand : public Command {$/;"	c
+Prompt	Prompt.h	/^		Prompt(const Env& env) : env(env) {}$/;"	f	class:Prompt
+Prompt	Prompt.h	/^class Prompt {$/;"	c
+Slash	Slash.cc	/^Slash::Slash(int argc, char** argv) {$/;"	f	class:Slash
+Slash	Slash.h	/^class Slash {$/;"	c
+args	ChangeDirCommand.h	/^		vector<string> args;$/;"	m	class:ChangeDirCommand
+commandLine	ProcessCommand.h	/^		string commandLine;$/;"	m	class:ProcessCommand
+compiler	Makefile	/^compiler := c++$/;"	m
+env	ChangeDirCommand.h	/^		Env env;$/;"	m	class:ChangeDirCommand
+env	Prompt.h	/^		Env env;$/;"	m	class:Prompt
+env	Slash.h	/^		Env env;$/;"	m	class:Slash
+evaluate	Prompt.cc	/^string Prompt::evaluate(const string& prompt) const {$/;"	f	class:Prompt
+execute	ChangeDirCommand.cc	/^void ChangeDirCommand::execute() {$/;"	f	class:ChangeDirCommand
+execute	ProcessCommand.cc	/^void ProcessCommand::execute() {$/;"	f	class:ProcessCommand
+get	Prompt.cc	/^string Prompt::get() const {$/;"	f	class:Prompt
+getHomeDir	Env.cc	/^string Env::getHomeDir() const {$/;"	f	class:Env
+getHostname	Env.cc	/^string Env::getHostname() const {$/;"	f	class:Env
+getPrimaryPromptString	Env.cc	/^string Env::getPrimaryPromptString() const {$/;"	f	class:Env
+getSecondaryPrompyString	Env.cc	/^string Env::getSecondaryPrompyString() const {$/;"	f	class:Env
+getUser	Env.cc	/^string Env::getUser() const {$/;"	f	class:Env
+hasPrimaryPromptString	Env.cc	/^bool Env::hasPrimaryPromptString() const {$/;"	f	class:Env
+hasSecondaryPromptString	Env.cc	/^bool Env::hasSecondaryPromptString() const {$/;"	f	class:Env
+main	Main.cc	/^int main(int argc, char** argv) {$/;"	f
+message	CommandException.h	/^		string message;$/;"	m	class:CommandException
+obj_dir	Makefile	/^obj_dir := .$/;"	m
+objects	Makefile	/^objects = $(patsubst $(src_dir)\/%.cc, $(obj_dir)\/%.o, $(sources))$/;"	m
+override	ChangeDirCommand.h	/^		virtual void execute() override;$/;"	m	class:ChangeDirCommand
+override	ProcessCommand.h	/^		virtual void execute() override;$/;"	m	class:ProcessCommand
+program_name	Makefile	/^program_name := slash$/;"	m
+run	Slash.cc	/^int Slash::run() {$/;"	f	class:Slash
+setShell	Env.cc	/^void Env::setShell(const string& shell) const {$/;"	f	class:Env
+shouldExit	Command.cc	/^bool Command::shouldExit() {$/;"	f	class:Command
+signalHandler	Slash.cc	/^void Slash::signalHandler(int number) {$/;"	f	class:Slash
+sources	Makefile	/^sources = $(wildcard $(src_dir)\/*.cc)$/;"	m
+splitLine	Slash.cc	/^vector<string> Slash::splitLine(const string& line) {$/;"	f	class:Slash
+src_dir	Makefile	/^src_dir := .$/;"	m
+what	CommandException.h	/^		virtual const char* what() const throw () {$/;"	f	class:CommandException
+~Command	Command.h	/^		virtual ~Command() {}$/;"	f	class:Command

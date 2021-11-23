@@ -3,10 +3,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <sys/wait.h>
 
 void ProcessCommand::execute() {
 	int status;
-	pid_t pid, waitPid;
+	pid_t pid;
 	pid = fork();
 	if(pid < 0) {
 		// error forking
@@ -15,7 +16,7 @@ void ProcessCommand::execute() {
 		exit(EXIT_SUCCESS);
 	} else {
 		do {
-		waitPid = waitpid(pid, &status, WUNTRACED);
+			waitpid(pid, &status, WUNTRACED);
 		} while(!WIFEXITED(status) && !WIFSIGNALED(status));
 	}
 }

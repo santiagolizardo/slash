@@ -16,6 +16,7 @@ using std::endl;
 #include <signal.h>
 
 #include <readline/readline.h>
+#include <readline/history.h>
 
 #include <memory>
 using std::unique_ptr;
@@ -36,6 +37,8 @@ vector<string> Slash::splitLine(const string& line) {
 }
 
 Slash::Slash(int argc, char** argv) {
+	(void)argc;
+
 	signal(SIGINT, Slash::signalHandler);
 
 	read_history(HISTORY_PATH);
@@ -44,6 +47,7 @@ Slash::Slash(int argc, char** argv) {
 }
 
 void Slash::signalHandler(int number) {
+	(void)number;
 }
 
 int Slash::run() {

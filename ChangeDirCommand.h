@@ -12,8 +12,8 @@ using std::string;
 
 class ChangeDirCommand : public Command {
 	private:
-		vector<string> args;
 		Env env;
+		vector<string> args;
 	public:
 		ChangeDirCommand(const Env& env, const vector<string>& args) : env(env), args(args) {}
 		virtual void execute() override;

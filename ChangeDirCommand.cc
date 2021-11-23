@@ -1,6 +1,7 @@
 #include "ChangeDirCommand.h"
 
 #include <cstdio>
+#include <cstring>
 #include <unistd.h>
 
 #include <unistd.h>
