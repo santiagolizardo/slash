@@ -1,9 +1,14 @@
-SlaSH is shell
-##############
+# SlaSH is shell
 
-```sh
-$ make
-$ ./slash
+## Requirements
+
+- Make
+- C++ compiler with support for 20 standard
+
+```shell
+make
+./slash
+
 user@host>
 user@host> ls -l
 user@host> exit
