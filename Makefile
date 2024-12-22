@@ -11,7 +11,7 @@ $(program_name): $(objects)
 	$(compiler) $^ -lreadline -o $@
 
 $(obj_dir)/%.o: $(src_dir)/%.cc
-	$(compiler) -g -std=c++20 -Wall -Wextra -c $< -o $@
+	$(compiler) -g -std=c++23 -Wall -Wextra -c $< -o $@
 
 install:
 	cp $(program_name) /usr/local/bin

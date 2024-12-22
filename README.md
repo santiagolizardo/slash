@@ -3,7 +3,7 @@
 ## Requirements
 
 - Make
-- C++ compiler with support for 20 standard
+- C++ compiler with support for 23 standard
 
 ```shell
 make
